@@ -4,7 +4,7 @@ wrapper {
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 17
 
 /*
  * Gets the version name from the latest Git tag
@@ -18,7 +18,7 @@ def getVersionName = {
 	}
 	return stdout.toString().trim()
 }
-version = getVersionName()
+//version = getVersionName()
 group = 'com.github.dgautier'
 
 repositories {
@@ -26,10 +26,11 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.apache.pdfbox:pdfbox:3.0.0'
+	implementation 'org.apache.pdfbox:pdfbox:3.0.1'
 	implementation 'org.slf4j:slf4j-api:1.7.36'
 	implementation 'org.apache.commons:commons-csv:1.9.0'
 	implementation group: 'org.jsoup', name: 'jsoup', version: '1.15.1'
 	testImplementation 'junit:junit:4.13.2'
+	testImplementation 'com.google.guava:guava:33.0.0-jre'
 	testImplementation 'commons-io:commons-io:2.11.0'
 }

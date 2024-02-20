@@ -114,7 +114,7 @@ public class TableTest {
 					}
 				} else if(fact[i].equalsIgnoreCase("Google")) {
 					cell = row.createCell((100 / 9f), fact[i]);
-					cell.setFont(PDType1Font.HELVETICA_OBLIQUE);
+					cell.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_OBLIQUE));
 					cell.setFontSize(6);
 					cell.setUrl(new URL("https://www.google.de"));
 				} else {
@@ -1206,14 +1206,15 @@ public class TableTest {
 		boolean drawLines = true;
 		float yStart = yStartNewPage;
 		float bottomMargin = 70;
+		PDType1Font helveticaBold = new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
 
 		// draw page title
 		PageContentStreamOptimized cos = new PageContentStreamOptimized(new PDPageContentStream(doc, page));
-		PDStreamUtils.write(cos, "Welcome to your first borderless table", PDType1Font.HELVETICA_BOLD, 14, 15, yStart,
+		PDStreamUtils.write(cos, "Welcome to your first borderless table", helveticaBold, 14, 15, yStart,
 				Color.BLACK);
 		cos.close();
 
-		yStart -= FontUtils.getHeight(PDType1Font.HELVETICA_BOLD, 14) + 15;
+		yStart -= FontUtils.getHeight(helveticaBold, 14) + 15;
 
 		BaseTable table = new BaseTable(yStart, yStartNewPage, bottomMargin, tableWidth, margin, doc, page, drawLines,
 				drawContent);
